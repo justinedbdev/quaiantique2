@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carte du restaurant Quai Antique
+{% endblock %}
+
+{% block body %}
+
+	<h1>La carte du restaurant</h1>
+
+	{% for categorie in categories %}
+
+		<h2>{{ categorie.nom }}</h2>
+		<ul>
+			{% for plat in plats[categorie.nom] %}
+				<li>{{ plat.titre }}</li>
+				<li>{{ (plat.prix /100)|number_format(2, ',', ' ') }}
+					€</li>
+				<p>
+					{{ plat.description|raw }}
+				</p>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+{% endblock %}
