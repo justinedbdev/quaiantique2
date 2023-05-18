@@ -1,10 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Quai Antique Lyon
+{% block title %}Restaurant Quai Antique Chambéry
 {% endblock %}
 
 {% block body %}
-	<h1>Bienvenue !</h1>
+	<section class="cover">
+		<div class="container img-cover">
+			<img src="/assets/logo_cover.png" alt="Logo Quai Antique" class="logo-cover" width="200">
+		</div>
+		<div class="title-h1">
+			<h1>Restaurant traditionnel<br>Savoyard - Chambéry</h1>
+			<a class="scroll-button" href="#concept">Découvrir</a>
+			{# <a class="scroll-arrow" href="#concept"><img src="assets/CTA_scroll_vertical.png" alt="flèche de scroll"/></a> #}
+		</div>
+	</section>
 
 	<section class="container">
 		<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">

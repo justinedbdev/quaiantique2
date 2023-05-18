@@ -1,7 +1,77 @@
+/* STYLE GENERAL */
+* {
+  font-family: "Manrope", sans-serif;
+}
+
+/* HEADER */
+/* logo header responsive*/
+.img-header {
+  max-width: 40%;
+  height: auto;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .img-header {
+    max-width: 40%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .img-header {
+    max-width: 50%;
+  }
+}
 .btn {
   border-radius: 0px;
 }
-
-.btn-primary {
+.btn-secondary {
   background-color: #72211d;
+  border-color: #72211d;
+  color: white;
+  font-size: 0.8rem;
+}
+.btn-secondary:hover,
+.btn-secondary:active {
+  color: #72211d;
+}
+.custom-navbar {
+  background-color: rgba(230, 225, 220, 0.5);
+  box-shadow: 1px 1px 3px rgba(114, 33, 29, 0.5);
+}
+.navbar .nav-link {
+  color: black;
+  font-size: 0.8rem;
+}
+.navbar .nav-link:hover {
+  color: #72211d;
+}
+
+/* SECTION COVER */
+/* Cover responsive */
+.cover {
+  height: 610px;
+  background-image: url(../assets/cover.jpg);
+  background-position: center;
+  background-size: cover;
+}
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .cover {
+    height: 700px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .cover {
+    height: 800px;
+  }
+}
+.img-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo-cover {
+  padding-top: 20rem;
+}
+.title-h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
