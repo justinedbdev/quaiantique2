@@ -5,5 +5,23 @@
 
 {% block body %}
 	<h1>Bienvenue !</h1>
-	<button type="button" class="btn btn-primary">Primary</button>
+
+	<div class="image-grid">
+		{% for image in images %}
+			<div class="image-container">
+				<img
+				src="{{ asset('upload/images/' ~ image.lien) }}" alt="{{ image.titre }}"/>
+			{# <div class="image-title">{{ image.titre }}</div> #}
+			</div>
+		{% endfor %}
+	</div>
+
+	{% for horaire in horaires %}
+		<div>
+			<h3>{{ horaire.jour }}</h3>
+			<p>{{ horaire.getFormattedOuvertureSoir }}
+				<br>
+				{{ horaire.getFormattedFermetureSoir }}</p>
+		</div>
+	{% endfor %}
 {% endblock %}

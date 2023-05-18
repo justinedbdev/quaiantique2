@@ -123,4 +123,24 @@ class Horaire
 
     return $this;
   }
+
+  public function getFormattedOuvertureMidi(): ?string
+  {
+    return $this->ouverture_midi ? $this->ouverture_midi->format('H:i') : null;
+  }
+
+  public function getFormattedFermetureMidi(): ?string
+  {
+    return $this->fermeture_midi ? $this->fermeture_midi->format('H:i') : null;
+  }
+
+  public function getFormattedOuvertureSoir(): ?string
+  {
+    return $this->ouverture_soir ? $this->ouverture_soir->format('H:i') : null;
+  }
+
+  public function getFormattedFermetureSoir(): ?string
+  {
+    return $this->fermeture_soir ? $this->fermeture_soir->format('H:i') : null;
+  }
 }
