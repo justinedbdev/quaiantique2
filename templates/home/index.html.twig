@@ -6,15 +6,37 @@
 {% block body %}
 	<h1>Bienvenue !</h1>
 
-	<div class="image-grid">
-		{% for image in images %}
-			<div class="image-container">
-				<img
-				src="{{ asset('upload/images/' ~ image.lien) }}" alt="{{ image.titre }}"/>
-			{# <div class="image-title">{{ image.titre }}</div> #}
+	<section class="container">
+		<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+			<ol class="carousel-indicators">
+				{% for image in images %}
+					<li data-bs-target="#myCarousel" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %} class="active" {% endif %}></li>
+				{% endfor %}
+			</ol>
+
+			<div class="carousel-inner">
+				{% for image in images %}
+					<div class="carousel-item {% if loop.first %} active {% endif %}">
+						<div class="d-flex justify-content-center align-items-center" style="max-height: 600px;">
+							<img src="{{ asset('upload/images/' ~ image.lien) }}" alt="{{ image.titre }}" class="img-fluid">
+						</div>
+						<div class="carousel-caption">
+							<h3>{{ image.titre }}</h3>
+						</div>
+					</div>
+				{% endfor %}
 			</div>
-		{% endfor %}
-	</div>
+
+			<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</section>
 
 	{% for horaire in horaires %}
 		<div>
