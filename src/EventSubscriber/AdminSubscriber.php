@@ -7,6 +7,7 @@ use App\Entity\Horaire;
 use App\Entity\Image;
 use App\Entity\Menu;
 use App\Entity\Plat;
+use App\Entity\Reservation;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -25,7 +26,7 @@ class AdminSubscriber implements EventSubscriberInterface
   {
     $entityInstance = $event->getEntityInstance();
 
-    if (!$entityInstance instanceof Plat && !$entityInstance instanceof Categorie && !$entityInstance instanceof Menu && !$entityInstance instanceof Image && !$entityInstance instanceof Horaire) return;
+    if (!$entityInstance instanceof Plat && !$entityInstance instanceof Categorie && !$entityInstance instanceof Menu && !$entityInstance instanceof Image && !$entityInstance instanceof Horaire && !$entityInstance instanceof Reservation) return;
 
     $entityInstance->setCreation(new \DateTime);
   }
@@ -34,7 +35,7 @@ class AdminSubscriber implements EventSubscriberInterface
   {
     $entityInstance = $event->getEntityInstance();
 
-    if (!$entityInstance instanceof Plat && !$entityInstance instanceof Categorie && !$entityInstance instanceof Menu && !$entityInstance instanceof Image && !$entityInstance instanceof Horaire) return;
+    if (!$entityInstance instanceof Plat && !$entityInstance instanceof Categorie && !$entityInstance instanceof Menu && !$entityInstance instanceof Image && !$entityInstance instanceof Horaire && !$entityInstance instanceof Reservation) return;
 
     $entityInstance->setModification(new \DateTime);
   }

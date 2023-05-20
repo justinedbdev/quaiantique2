@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Horaire;
 use App\Entity\Image;
+use App\Entity\Menu;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,9 +26,13 @@ class HomeController extends AbstractController
     $repository = $this->em->getRepository(Horaire::class);
     $horaires = $repository->findAll(Horaire::class);
 
+    $repository = $this->em->getRepository(Menu::class);
+    $menus = $repository->findAll(Menu::class);
+
     return $this->render('home/index.html.twig', [
       'images' => $images,
       'horaires' => $horaires,
+      'menus' => $menus,
     ]);
   }
 }

@@ -7,6 +7,7 @@ use App\Entity\Horaire;
 use App\Entity\Image;
 use App\Entity\Menu;
 use App\Entity\Plat;
+use App\Entity\Reservation;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -26,7 +27,7 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         $url = $this->adminUrlGenerator
-            ->setController(PlatCrudController::class)
+            ->setController(ReservationCrudController::class)
             ->generateUrl();
         return $this->redirect($url);
     }
@@ -40,6 +41,15 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::section('Tableau de bord');
+
+        yield MenuItem::linkToRoute('Homepage', 'fas fa-house', 'homepage');
+
+        yield MenuItem::section('Réservation');
+
+        yield MenuItem::subMenu('Reservation', 'fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('Ajouter une réservation', 'fas fa-plus', Reservation::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Afficher les réservation', 'fas fa-eye', Reservation::class)
+        ]);
 
         yield MenuItem::section('Carte du restaurant');
 

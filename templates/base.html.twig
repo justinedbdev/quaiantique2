@@ -24,7 +24,7 @@
 	<body>
 		{% include '_partials/_flash.html.twig' %}
 		{% block header %}
-			<nav class="custom-navbar navbar sticky-top pt-0 pb-0 navbar-expand-lg ">
+			<nav class="custom-navbar navbar py-0 navbar-expand-lg position-fixed w-100">
 				<div class="container-fluid">
 					<a class="navbar-brand ps-3 py-2" href="/">
 						<img src="/assets/logo_header.png" alt="Logo Quai Antique" class="img-header">
@@ -41,7 +41,7 @@
 								<a class="nav-link" href="#">Contact</a>
 							</li>
 							<li class="nav-item pe-2">
-								<a class="btn btn-secondary" role="button">Reserver une table</a>
+								<a class="btn btn-secondary" href="/reservation" role="button">Reserver une table</a>
 							</li>
 							<li class="nav-item pe-2">
 								<a class="btn btn-secondary" href="/inscription" role="button">Se connecter</a>

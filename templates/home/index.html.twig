@@ -4,55 +4,118 @@
 {% endblock %}
 
 {% block body %}
-	<section class="cover">
-		<div class="container img-cover">
-			<img src="/assets/logo_cover.png" alt="Logo Quai Antique" class="logo-cover" width="200">
-		</div>
-		<div class="title-h1">
-			<h1>Restaurant traditionnel<br>Savoyard - Chambéry</h1>
-			<a class="scroll-button" href="#concept">Découvrir</a>
-			{# <a class="scroll-arrow" href="#concept"><img src="assets/CTA_scroll_vertical.png" alt="flèche de scroll"/></a> #}
+	<section class="cover d-flex justify-content-center align-items-center pt-1">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-4"></div>
+				<div class="col-xl-4 d-flex flex-column align-items-center cover-desc">
+					<img src="/assets/logo_cover.png" alt="Logo Quai Antique" width="200">
+					<h1 class="pt-3 text-center">Restaurant traditionnel<br>Savoyard - Chambéry</h1>
+				</div>
+				<div class="col-xl-4"></div>
+			</div>
 		</div>
 	</section>
 
-	<section class="container">
-		<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-			<ol class="carousel-indicators">
-				{% for image in images %}
-					<li data-bs-target="#myCarousel" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %} class="active" {% endif %}></li>
-				{% endfor %}
-			</ol>
-
-			<div class="carousel-inner">
-				{% for image in images %}
-					<div class="carousel-item {% if loop.first %} active {% endif %}">
-						<div class="d-flex justify-content-center align-items-center" style="max-height: 600px;">
-							<img src="{{ asset('upload/images/' ~ image.lien) }}" alt="{{ image.titre }}" class="img-fluid">
+	<section class="presentation pt-5">
+		<div class="container">
+			<div class="row">
+				<div class="card mb-3 border-0 rounded-0">
+					<div class="row">
+						<div class="col-md-7 d-flex">
+							<div class="card-body align-self-center">
+								<h2 class="card-title mb-3">Quai Antique - Chambéry</h5>
+								<p class="card-text">Un petit chalet à la déco boisée de style montagnard.<br><br>Tous nos produits proviennent de petites coopératives de Haute Savoie et nous coupons avec passion, chaque jour, notre charcuterie et fromage. Tous nos fromages sont au lait cru !<br><br>Fondues, tartiflettes, grillades, salades, … ainsi que notre Raclette à Volonté !<br><br>*Salle climatisée*</p>
+								<div class="card-text">
+									<a href="/carte" class="text-body-secondary btn btn-secondary">Consulter notre carte</a>
+								</div>
+							</div>
 						</div>
-						<div class="carousel-caption">
-							<h3>{{ image.titre }}</h3>
+						<div class="col-md-5 d-flex">
+							<img src="/assets/img_presentation.jpg" class="img-fluid" alt="Photo du bar">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="gallery py-5">
+		<div class="container">
+			<h2 class="gallery-title pb-3">Galerie photos - Quai Antique</h2>
+			<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+				<ol class="carousel-indicators">
+					{% for image in images %}
+						<li data-bs-target="#myCarousel" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %} class="active" {% endif %}></li>
+					{% endfor %}
+				</ol>
+
+				<div class="carousel-inner">
+					{% for image in images %}
+						<div class="carousel-item {% if loop.first %} active {% endif %}">
+							<div class="d-flex justify-content-center align-items-center" style="max-height: 500px;">
+								<img src="{{ asset('upload/images/' ~ image.lien) }}" alt="{{ image.titre }}" class="img-fluid">
+							</div>
+							<div class="carousel-caption">
+								<h3>{{ image.titre }}</h3>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+
+				<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+	</section>
+
+	<section class="menu py-5">
+		<div class="container">
+			<div class="row">
+				<h2 class="menu-title pb-3">Menus - Quai Antique</h2>
+				{% for menu in menus %}
+					<div class="col-md-4">
+						<div class="card border-0 rounded-0 h-100 px-3 g-4">
+							<div class="card-header border-0 text-uppercase">
+								<h4 class="pt-2 text-center">{{ menu.titre }}</h4>
+							</div>
+							<img src="{{ asset('upload/images/' ~ menu.image) }}" class="card-img-top" alt="{{ menu.titre }}">
+							<div class="card-body">
+								<p class="card-text text-center">{{ menu.description}}</p>
+								<p class="card-text text-center">{{ (menu.prix/100)|number_format(2) }}€</p>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				<div class="d-flex justify-content-center align-items-center mt-4">
+					<a class="btn btn-secondary" href="/carte">Consulter notre carte</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="hour py-5">
+		<div class="container">
+			<div class="row">
+				<h2 class="hour-title pb-3">Horaires - Quai Antique - Chambéry</h2>
+				{% for horaire in horaires %}
+					<div class="col-lg-2">
+						<div class="card border-0">
+							<div class="card-body">
+								<h4 class="card-title text-uppercase text-center">{{ horaire.jour }}</h4>
+								<p class="card-text text-center">{{ horaire.getFormattedOuvertureSoir }}<br>{{ horaire.getFormattedFermetureSoir }}</p>
+							</div>
 						</div>
 					</div>
 				{% endfor %}
 			</div>
-
-			<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="visually-hidden">Next</span>
-			</button>
 		</div>
 	</section>
 
-	{% for horaire in horaires %}
-		<div>
-			<h3>{{ horaire.jour }}</h3>
-			<p>{{ horaire.getFormattedOuvertureSoir }}
-				<br>
-				{{ horaire.getFormattedFermetureSoir }}</p>
-		</div>
-	{% endfor %}
 {% endblock %}

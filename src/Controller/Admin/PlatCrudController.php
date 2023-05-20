@@ -13,7 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,7 +43,7 @@ class PlatCrudController extends AbstractCrudController
 
         yield IdField::new('id')->hideOnForm();
         yield TextField::new('titre');
-        yield TextEditorField::new('description');
+        yield TextareaField::new('description');
         yield MoneyField::new('prix')->setCurrency('EUR');
         yield AssociationField::new('categorie');
         yield DateTimeField::new('creation')

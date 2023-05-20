@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservation
+{% endblock %}
+
+{% block body %}
+
+	<section class="reservation-form text-center">
+		<div class="container">
+			{{ form_start(reservationForm) }}
+			<div class="row form-top py-4 rounded-3">
+				<h1 class="mt-4 mb-5">Réservation d'une table</h1>
+				<div class="col-md-1"></div>
+				<div class="col-md-10 d-flex justify-content-between align-items-center">
+					<p>
+						{{ form_label(reservationForm.date_reservation, 'Date de réservation', {'label_attr': {'class': 'label-top'}}) }}
+						{{ form_widget(reservationForm.date_reservation, {'attr': {'class': 'widget-top'}}) }}
+					</p>
+					<p>
+						{{ form_label(reservationForm.creneau_horaire, 'Créneau horaire', {'label_attr': {'class': 'label-top'}}) }}
+						{{ form_widget(reservationForm.creneau_horaire, {'attr': {'class': 'widget-top'}}) }}
+					</p>
+					<p>
+						{{ form_label(reservationForm.nb_couvert, 'Nombre de convive', {'label_attr': {'class': 'label-top'}}) }}
+						{{ form_widget(reservationForm.nb_couvert, {'attr': {'class': 'widget-top'}}) }}
+					</p>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+
+			<div class="row mt-4">
+				<div class="col-md-2"></div>
+				<div class="col-md-8 d-flex justify-content-between align-items-center">
+					<p>
+						{{ form_label(reservationForm.nom_reservation, 'Nom', {'label_attr': {'class': 'label'}}) }}
+						{{ form_widget(reservationForm.nom_reservation, {'attr': {'class': 'widget'}}) }}
+					</p>
+					<p>
+						{{ form_label(reservationForm.prenom_reservation, 'Prenom', {'label_attr': {'class': 'label'}}) }}
+						{{ form_widget(reservationForm.prenom_reservation, {'attr': {'class': 'widget'}}) }}
+					</p>
+				</div>
+				<div class="col-md-2"></div>
+
+				<div class="row mt-4">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 d-flex justify-content-between align-items-center">
+						<p>
+							{{ form_label(reservationForm.email_reservation, 'E-mail', {'label_attr': {'class': 'label'}}) }}
+							{{ form_widget(reservationForm.email_reservation, {'attr': {'class': 'widget'}}) }}
+						</p>
+						<p>
+							{{ form_label(reservationForm.telephone_reservation, 'Numéro de téléphone', {'label_attr': {'class': 'label'}}) }}
+							{{ form_widget(reservationForm.telephone_reservation, {'attr': {'class': 'widget'}}) }}
+						</p>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+
+				<div class="row mt-4">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 d-flex justify-content-between align-items-center">
+						<p>
+							{{ form_label(reservationForm.allergie_reservation, 'Avez-vous des allergies à signaler au cuisinier?', {'label_attr': {'class': 'label'}}) }}
+							{{ form_widget(reservationForm.allergie_reservation, {'attr': {'class': 'widget'}}) }}
+						</p>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+
+				<div class="row mt-4">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<button type="submit" class="btn btn-secondary">Valider la réservation</button>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</div>
+			{{ form_end(reservationForm) }}
+		</div>
+	</section>
+
+
+{% endblock %}

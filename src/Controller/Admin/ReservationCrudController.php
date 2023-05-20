@@ -2,37 +2,38 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Menu;
+use App\Entity\Reservation;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 
-class MenuCrudController extends AbstractCrudController
+class ReservationCrudController extends AbstractCrudController
 {
     public const ACTION_DUPLICATE  = 'dupliquer';
-    public const IMAGES_BASE_PATH = 'upload/images';
-    public const IMAGES_UPLOAD_DIR = 'public/upload/images';
 
     public static function getEntityFqcn(): string
     {
-        return Menu::class;
+        return Reservation::class;
     }
 
     public function configureActions(Actions $actions): Actions
     {
         $duplicate = Action::new(self::ACTION_DUPLICATE)
-            ->linkToCrudAction('duplicateMenu')
+            ->linkToCrudAction('duplicateReservation')
             ->setCssClass('btn btn-info');
 
         return $actions
@@ -42,41 +43,34 @@ class MenuCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id')->hideOnForm(),
-            TextField::new('titre'),
-            TextareaField::new('description'),
-            ImageField::new('image', 'Image')
-                ->setBasePath(self::IMAGES_BASE_PATH)
-                ->setUploadDir(self::IMAGES_UPLOAD_DIR)
-                ->setSortable(false),
-            MoneyField::new('prix')->setCurrency('EUR'),
-            DateTimeField::new('creation')
-                ->hideOnForm()
-                ->setTimezone('Europe/Paris'),
-            DateTimeField::new('modification')
-                ->hideOnForm()
-                ->setTimezone('Europe/Paris'),
-        ];
+        yield IdField::new('id')->hideOnForm();
+        yield DateField::new('date_reservation', 'Date de la réservation');
+        yield TimeField::new('creneau_horaire', 'Créneau horaire');
+        yield IntegerField::new('nb_couvert', 'Nombre de convive');
+        yield TextField::new('nom_reservation', 'Nom');
+        yield TextField::new('prenom_reservation', 'Prénom');
+        yield EmailField::new('email_reservation', 'E-mail');
+        yield TelephoneField::new('telephone_reservation', 'Numéro de téléphone');
+        yield TextareaField::new('allergie_reservation', 'Allergie');
     }
 
-    public function duplicateMenu(
+    public function duplicateReservation(
         AdminContext $context,
         AdminUrlGenerator $adminUrlGenerator,
         EntityManagerInterface $em
     ): Response {
         /**
-         * @var Menu $menu
+         * @var Reservation $reservation
          */
-        $menu = $context->getEntity()->getInstance();
+        $reservation = $context->getEntity()->getInstance();
 
-        $duplicatedMenu = clone $menu;
+        $duplicatedReservation = clone $reservation;
 
-        parent::persistEntity($em, $duplicatedMenu);
+        parent::persistEntity($em, $duplicatedReservation);
 
         $url = $adminUrlGenerator->setController(self::class)
             ->setAction(Action::DETAIL)
-            ->setEntityId($duplicatedMenu->getId())
+            ->setEntityId($duplicatedReservation->getId())
             ->generateUrl();
 
         return $this->redirect($url);

@@ -2,6 +2,23 @@
 * {
   font-family: "Manrope", sans-serif;
 }
+p {
+  font-size: 1rem;
+  line-height: 1.3rem;
+}
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+h2 {
+  font-size: 1.75rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.2rem;
+}
 
 /* HEADER */
 /* logo header responsive*/
@@ -35,6 +52,7 @@
 .custom-navbar {
   background-color: rgba(230, 225, 220, 0.5);
   box-shadow: 1px 1px 3px rgba(114, 33, 29, 0.5);
+  z-index: 99;
 }
 .navbar .nav-link {
   color: black;
@@ -45,33 +63,90 @@
 }
 
 /* SECTION COVER */
-/* Cover responsive */
 .cover {
-  height: 610px;
-  background-image: url(../assets/cover.jpg);
-  background-position: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../assets/cover.jpg) center center fixed no-repeat;
+  height: 800px;
   background-size: cover;
 }
-@media screen and (min-width: 992px) and (max-width: 1200px) {
-  .cover {
-    height: 700px;
-  }
+.cover-desc h1 {
+  color: white;
 }
-@media screen and (min-width: 1200px) {
-  .cover {
-    height: 800px;
-  }
+
+/* SECTION PRESENTATION */
+.presentation .card-body {
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.25);
 }
-.img-cover {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+/* SECTION MENU */
+.menu {
+  background-color: #9f754d;
 }
-.logo-cover {
-  padding-top: 20rem;
+.menu-title {
+  color: white;
 }
-.title-h1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.menu .card-header {
+  background-color: white;
+}
+
+/* SECTION HOUR */
+.hour .card-body {
+  box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* SECTION CARTE */
+.carte {
+  background-color: #50463f;
+}
+.carte-title {
+  margin-top: 90px;
+  color: white;
+}
+.carte .card {
+  background-color: #50463f;
+}
+.carte .nav-link {
+  color: white;
+}
+.carte h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+.carte h3 {
+  color: white;
+  font-weight: 600;
+}
+.carte h4 {
+  color: white;
+  font-weight: 500;
+}
+.carte p {
+  color: #e6e1dc;
+}
+
+.carte hr {
+  color: white;
+  margin-top: -1px;
+  margin-bottom: 20px;
+}
+
+/* SECTION RESERVATION */
+.reservation-form {
+  padding-top: 100px;
+}
+.reservation-form h1 {
+  color: white;
+}
+
+.form-top {
+  background-color: #9f754d;
+}
+
+.label-top {
+  color: white;
+}
+
+.widget-top {
+  border-style: none;
+  margin-left: 8px;
 }
