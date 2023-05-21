@@ -4,41 +4,54 @@
 {% endblock %}
 
 {% block body %}
-	<form method="post">
-		{% if error %}
-			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
+	<section class="login padding-form mb-4">
+		<div class="container login-content pt-3">
+			<form method="post">
+				<h2 class="mt-4 mb-4 text-center">Connexion</h2>
 
-		{% if app.user %}
-			<div class="mb-3">
-				You are logged in as
-				{{ app.user.email }},
-				<a href="{{ path('app_logout') }}">Logout</a>
-			</div>
-		{% endif %}
+				<hr class="graph">
 
-		<h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
-		<label for="inputEmail">Email</label>
-		<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-		<label for="inputPassword">Password</label>
-		<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+				<div class="row py-3">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 text-center">
+						<p>Vous n'avez pas de compte ?
+						</p>
+						<a href="/inscription" class="btn btn-secondary">S'inscrire</a>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
 
-		<input
-		type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<hr class="graph">
 
-		{#
-												        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-												        See https://symfony.com/doc/current/security/remember_me.html
-												
-												        <div class="checkbox mb-3">
-												            <label>
-												                <input type="checkbox" name="_remember_me"> Remember me
-												            </label>
-												        </div>
-												    #}
+				<div class="row py-3">
+					<div class="col-md-2"></div>
+					<div class="col-md-8 form-label-top">
 
-		<button class="btn btn-lg btn-primary" type="submit">
-			Se connecter
-		</button>
-	</form>
+						{% if error %}
+							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+						{% endif %}
+						{% if app.user %}
+							<div class="mb-3">
+								Vous êtes connecté avec l'adresse mail:
+								{{ app.user.email }}
+								<a class="btn btn-secondary" href="{{ path('app_logout') }}">Logout</a>
+							</div>
+						{% endif %}
+
+						<label for="inputEmail" class="mb-2">Email</label>
+						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Votre email" class="form-control" autocomplete="email" required autofocus>
+						<label for="inputPassword" class="mt-4 mb-2">Password</label>
+						<input type="password" name="password" id="inputPassword" placeholder="Votre mot de passe" class="form-control" autocomplete="current-password" required>
+
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+						<button class="btn btn-secondary mt-4 mb-3" type="submit">
+							Se connecter
+						</button>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</form>
+		</div>
+	</section>
 {% endblock %}

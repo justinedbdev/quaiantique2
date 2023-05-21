@@ -44,13 +44,13 @@ class ReservationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();
-        yield DateField::new('date_reservation', 'Date de la réservation');
-        yield TimeField::new('creneau_horaire', 'Créneau horaire');
-        yield IntegerField::new('nb_couvert', 'Nombre de convive');
+        yield DateField::new('date_reservation', 'Date résa');
+        yield TimeField::new('creneau_horaire', 'Horaire');
+        yield IntegerField::new('nb_couvert', 'Nb de convive');
         yield TextField::new('nom_reservation', 'Nom');
         yield TextField::new('prenom_reservation', 'Prénom');
         yield EmailField::new('email_reservation', 'E-mail');
-        yield TelephoneField::new('telephone_reservation', 'Numéro de téléphone');
+        yield TelephoneField::new('telephone_reservation', 'Téléphone');
         yield TextareaField::new('allergie_reservation', 'Allergie');
     }
 

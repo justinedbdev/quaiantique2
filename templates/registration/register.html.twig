@@ -4,15 +4,23 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Inscription</h1>
+	<section class="register padding-form mb-4">
+		<div class="container">
+			{{ form_start(registrationForm) }}
+			<div class="row register-content py-5">
+				<h2 class="mt-4 mb-5 text-center">Inscription</h2>
+				<div class="col-md-2"></div>
+				<div class="col-md-8 form-label-top">
+					{{ form_row(registrationForm.email) }}
+					{{ form_row(registrationForm.plainPassword, {label: 'Mot de passe'}) }}
+					{{ form_row(registrationForm.agreeTerms) }}
+					<button type="submit" class="btn btn-secondary">S'inscrire</button>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			{{ form_end(registrationForm) }}
+		</div>
+	</section>
 
-	{{ form_start(registrationForm) }}
-	{{ form_row(registrationForm.email) }}
-	{{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe'
-        }) }}
-	{{ form_row(registrationForm.agreeTerms) }}
 
-	<button type="submit" class="btn">S'inscrire</button>
-	{{ form_end(registrationForm) }}
 {% endblock %}

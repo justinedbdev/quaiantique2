@@ -11,6 +11,7 @@
 				<div class="col-xl-4 d-flex flex-column align-items-center cover-desc">
 					<img src="/assets/logo_cover.png" alt="Logo Quai Antique" width="200">
 					<h1 class="pt-3 text-center">Restaurant traditionnel<br>Savoyard - Chambéry</h1>
+					<a href="/reservation" class="btn btn-secondary btn-lg mt-3">Réserver une table</a>
 				</div>
 				<div class="col-xl-4"></div>
 			</div>
@@ -27,7 +28,7 @@
 								<h2 class="card-title mb-3">Quai Antique - Chambéry</h5>
 								<p class="card-text">Un petit chalet à la déco boisée de style montagnard.<br><br>Tous nos produits proviennent de petites coopératives de Haute Savoie et nous coupons avec passion, chaque jour, notre charcuterie et fromage. Tous nos fromages sont au lait cru !<br><br>Fondues, tartiflettes, grillades, salades, … ainsi que notre Raclette à Volonté !<br><br>*Salle climatisée*</p>
 								<div class="card-text">
-									<a href="/carte" class="text-body-secondary btn btn-secondary">Consulter notre carte</a>
+									<a href="/reservation" class="text-body-secondary btn btn-secondary">Réserver une table</a>
 								</div>
 							</div>
 						</div>
@@ -43,34 +44,43 @@
 	<section class="gallery py-5">
 		<div class="container">
 			<h2 class="gallery-title pb-3">Galerie photos - Quai Antique</h2>
-			<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-				<ol class="carousel-indicators">
-					{% for image in images %}
-						<li data-bs-target="#myCarousel" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %} class="active" {% endif %}></li>
-					{% endfor %}
-				</ol>
+			<div class="row">
+				<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+					<ol class="carousel-indicators">
+						{% for image in images %}
+							<li data-bs-target="#myCarousel" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %} class="active" {% endif %}></li>
+						{% endfor %}
+					</ol>
 
-				<div class="carousel-inner">
-					{% for image in images %}
-						<div class="carousel-item {% if loop.first %} active {% endif %}">
-							<div class="d-flex justify-content-center align-items-center" style="max-height: 500px;">
-								<img src="{{ asset('upload/images/' ~ image.lien) }}" alt="{{ image.titre }}" class="img-fluid">
+					<div class="carousel-inner">
+						{% for image in images %}
+							<div class="carousel-item {% if loop.first %} active {% endif %}">
+								<div class="d-flex justify-content-center align-items-center" style="max-height: 500px;">
+									<img src="{{ asset('upload/images/' ~ image.lien) }}" alt="{{ image.titre }}" class="img-fluid">
+								</div>
+								<div class="carousel-caption">
+									<h3>{{ image.titre }}</h3>
+								</div>
 							</div>
-							<div class="carousel-caption">
-								<h3>{{ image.titre }}</h3>
-							</div>
-						</div>
-					{% endfor %}
+						{% endfor %}
+					</div>
+
+					<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
 				</div>
-
-				<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
+			</div>
+			<div class="row mt-5 text-center">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					<a href="/reservation" class="btn btn-secondary">Réserver une table</a>
+				</div>
+				<div class="col-md-4"></div>
 			</div>
 		</div>
 	</section>
@@ -93,14 +103,15 @@
 						</div>
 					</div>
 				{% endfor %}
-				<div class="d-flex justify-content-center align-items-center mt-4">
-					<a class="btn btn-secondary" href="/carte">Consulter notre carte</a>
+				<div class="d-flex justify-content-center mt-5 ">
+					<a class="btn btn-secondary mx-3" href="/carte">Découvrir notre carte</a>
+					<a class="btn btn-secondary mx-3" href="/reservation">Réserver une table</a>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="hour py-5">
+	<section class="hour">
 		<div class="container">
 			<div class="row">
 				<h2 class="hour-title pb-3">Horaires - Quai Antique - Chambéry</h2>

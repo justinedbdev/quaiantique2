@@ -22,7 +22,7 @@ class RegistrationFormType extends AbstractType
         'label' => 'Votre email',
         'attr' => [
           'class' => 'mt-2',
-          'placeholder' => 'Entrer votre email'
+          'placeholder' => 'Entrez votre email'
         ]
       ])
       ->add('agreeTerms', CheckboxType::class, [
@@ -40,15 +40,15 @@ class RegistrationFormType extends AbstractType
         'mapped' => false,
         'attr' => [
           'autocomplete' => 'new-password',
-          'placeholder' => 'Entrer votre mot de passe'
+          'placeholder' => 'Entrez votre mot de passe'
         ],
         'constraints' => [
           new NotBlank([
-            'message' => 'Entrer un mot de passe.',
+            'message' => 'Entrez un mot de passe.',
           ]),
           new Length([
             'min' => 6,
-            'minMessage' => 'Your password should be at least {{ limit }} characters',
+            'minMessage' => 'Votre mot de passe doit faire {{ limit }} caractères minimum',
             // max length allowed by Symfony for security reasons
             'max' => 4096,
           ]),
