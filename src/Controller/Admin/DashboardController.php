@@ -93,7 +93,5 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Ajouter un horaire', 'fas fa-plus', Horaire::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Afficher les horaires', 'fas fa-eye', Horaire::class)
         ]);
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
-
     }
 }

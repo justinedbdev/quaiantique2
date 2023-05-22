@@ -1,3 +1,4 @@
+/* Password visibility function */
 const togglePassword = () => {
   const passwordInput = document.querySelector("#user_password");
   passwordInput.type = passwordInput.type === "text" ? "password" : "text";

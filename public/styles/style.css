@@ -23,8 +23,7 @@ h4 {
   padding-top: 100px;
 }
 
-/* HEADER */
-/* logo header responsive*/
+/* SECTION HEADER */
 .img-header {
   max-width: 40%;
   height: auto;
@@ -91,6 +90,7 @@ h4 {
 .presentation .card-body {
   box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.25);
 }
+
 /* SECTION MENU */
 .menu {
   background-color: #9f754d;
