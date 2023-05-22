@@ -1,14 +1,24 @@
-<h1>Confirmation de votre compte utilisateur</h1>
-<p>
-	Bonjour
-	{{ user.email }}
-	et bienvenue sur notre site.<br><br>
-	Veuillez confirmer votre compte dès maintenant en cliquant sur le lien ci-dessous.<br><br>
-	Ce lien est valable jusqu'au
-	<strong>{{ lifeTimeToken }}</strong>, après cette date il ne sera plus valable.<br><br>
-	<a href="{{ absolute_url(path('account_verify', {token: token, id: user.id})) }}">
-		Valider mon compte
-	</a><br><br>
-	<strong>Ceci est un mail automatique, merci de ne pas y répondre</strong><br><br>
-	A bientôt sur notre site.
-</p>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Confirmation de votre compte utilisateur</h1>
+		<p>
+			Bonjour
+			{{ user.email }}
+			et bienvenue sur notre site.<br><br>
+			Veuillez confirmer votre compte dès maintenant en cliquant sur le lien ci-dessous.<br><br>
+			Ce lien est valable jusqu'au
+			<strong>{{ lifeTimeToken }}</strong>, après cette date il ne sera plus valable.<br><br>
+			<a href="{{ absolute_url(path('account_verify', {token: token, id: user.id})) }}">
+				Valider mon compte
+			</a><br><br>
+			<strong>Ceci est un mail automatique, merci de ne pas y répondre</strong><br><br>
+			A bientôt sur notre site.
+		</p>
+	</body>
+</html>
