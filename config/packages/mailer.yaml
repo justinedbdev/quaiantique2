@@ -1,4 +1,5 @@
 framework:
   mailer:
-    dsn: "%env(MAILER_DSN)%"
-    # message_bus: false
+    dsn:
+      "smtp://%env(MAILGUN_SMTP_LOGIN)%:%env(MAILGUN_SMTP_PASSWORD)%@%env(MAILGUN_SMTP_SERVER)%:%env(MAILGUN_SMTP_PORT)%?verify_peer=0&region=us"
+      #dsn: "%env(MAILER_DSN)%"
