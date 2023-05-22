@@ -40,8 +40,15 @@
 
 						<label for="inputEmail" class="mb-2">Email</label>
 						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Votre email" class="form-control" autocomplete="email" required autofocus>
-						<label for="inputPassword" class="mt-4 mb-2">Password</label>
-						<input type="password" name="password" id="inputPassword" placeholder="Votre mot de passe" class="form-control" autocomplete="current-password" required>
+						<label for="inputPassword" class="mt-4 mb-2">Mot de passe</label>
+						<div class="input-group">
+							<input type="password" name="password" id="user_password" placeholder="Votre mot de passe" class="form-control" autocomplete="current-password" required>
+							<span role="button" class="input-group-text" onclick="togglePassword()">
+								<i class="bi bi-eye" id="eye"></i>
+								<i class="bi bi-eye-slash d-none" id="eye-slash"></i>
+							</span>
+						</div>
+
 
 						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
