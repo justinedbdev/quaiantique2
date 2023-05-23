@@ -93,7 +93,7 @@ class ReservationFormType extends AbstractType
                 ]
             ])
             ->add('allergie_reservation', TextareaType::class, [
-                'label' => 'Avez-vous des allergies à signaler au cusinier ?',
+                'label' => 'Avez-vous des allergies à signaler au cuisinier ?',
                 'required' => false,
                 'attr' => [
                     'placeholder' => 'Allergies ou informations complémentaires à déclarer'
