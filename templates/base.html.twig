@@ -46,10 +46,12 @@
 							<li class="nav-item pe-2">
 								<a class="btn btn-secondary" href="/connexion" role="button">Se connecter</a>
 							</li>
-							{% if app.user %}
+							{% if is_granted('ROLE_ADMIN') %}
 								<li class="nav-item pe-2">
 									<a class="btn btn-secondary" href="/admin" role="button">Admin</a>
 								</li>
+							{% endif %}
+							{% if app.user %}
 								<li class="nav-item pe-2">
 									<a class="btn btn-secondary" href="/logout" role="button">Se déconnecter</a>
 								</li>
