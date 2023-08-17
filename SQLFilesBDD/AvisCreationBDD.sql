@@ -10,6 +10,6 @@ CREATE TABLE
 INSERT INTO
     Avis (note, contenu, client_id)
 VALUES 
-    (5, 'Le service est rapide et génial, nous avons toujours été bien accueillis!', 52),*
+    (5, 'Le service est rapide et génial, nous avons toujours été bien accueillis!', 52),
     (4, 'Lieu très chaleureux. Convient à des groupes d\'amis. Les repas sont très bon et les formules sont abordables et permet de goûter a plusieurs spécialités savoyardes.', 123),
     (5, 'Tout était parfait!', 189),
