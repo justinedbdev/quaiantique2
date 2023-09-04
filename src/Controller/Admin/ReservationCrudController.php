@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Reservation;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -44,8 +45,7 @@ class ReservationCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id')->hideOnForm();
-        yield DateField::new('date_reservation', 'Date réservation');
-        yield TimeField::new('creneau_horaire', 'Horaire');
+        yield DateTimeField::new('date_reservation', 'Date & Heure');
         yield IntegerField::new('nb_couvert', 'Nombre de convive');
         yield TextField::new('nom_reservation', 'Nom');
         yield TextField::new('prenom_reservation', 'Prénom');

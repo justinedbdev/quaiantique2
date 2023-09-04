@@ -17,7 +17,7 @@ class Reservation
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[Assert\NotBlank]
-    private ?\DateTimeInterface $date = null;
+    private ?\DateTimeInterface $date_reservation = null;
 
     #[ORM\Column]
     #[Assert\GreaterThanOrEqual(1)]
@@ -48,14 +48,14 @@ class Reservation
         return $this->id;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getDateReservation(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->date_reservation;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDateReservation(\DateTimeInterface $date_reservation): self
     {
-        $this->date = $date;
+        $this->date_reservation = $date_reservation;
 
         return $this;
     }
