@@ -43,6 +43,15 @@ class Reservation
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $allergie_reservation = null;
 
+    #[ORM\ManyToOne(inversedBy: 'placeDisponible')]
+    private ?client $client = null;
+
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    private ?client $clients = null;
+
+    #[ORM\ManyToOne(inversedBy: 'reservations')]
+    private ?PlaceDisponible $placesDisponibles = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -128,6 +137,42 @@ class Reservation
     public function setAllergieReservation(?string $allergie_reservation): self
     {
         $this->allergie_reservation = $allergie_reservation;
+
+        return $this;
+    }
+
+    public function getClient(): ?client
+    {
+        return $this->client;
+    }
+
+    public function setClient(?client $client): self
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    public function getClients(): ?client
+    {
+        return $this->clients;
+    }
+
+    public function setClients(?client $clients): self
+    {
+        $this->clients = $clients;
+
+        return $this;
+    }
+
+    public function getPlacesDisponibles(): ?PlaceDisponible
+    {
+        return $this->placesDisponibles;
+    }
+
+    public function setPlacesDisponibles(?PlaceDisponible $placesDisponibles): self
+    {
+        $this->placesDisponibles = $placesDisponibles;
 
         return $this;
     }
