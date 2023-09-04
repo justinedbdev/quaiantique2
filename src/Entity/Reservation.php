@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -14,25 +15,29 @@ class Reservation
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_reservation = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $creneau_horaire = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank]
+    private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
+    #[Assert\GreaterThanOrEqual(1)]
     private ?int $nb_couvert = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $nom_reservation = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $prenom_reservation = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Email]
+    #[Assert\NotBlank]
     private ?string $email_reservation = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?int $telephone_reservation = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -43,26 +48,14 @@ class Reservation
         return $this->id;
     }
 
-    public function getDateReservation(): ?\DateTimeInterface
+    public function getDate(): ?\DateTimeInterface
     {
-        return $this->date_reservation;
+        return $this->date;
     }
 
-    public function setDateReservation(\DateTimeInterface $date_reservation): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->date_reservation = $date_reservation;
-
-        return $this;
-    }
-
-    public function getCreneauHoraire(): ?\DateTimeInterface
-    {
-        return $this->creneau_horaire;
-    }
-
-    public function setCreneauHoraire(\DateTimeInterface $creneau_horaire): self
-    {
-        $this->creneau_horaire = $creneau_horaire;
+        $this->date = $date;
 
         return $this;
     }
