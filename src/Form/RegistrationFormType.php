@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -34,24 +35,38 @@ class RegistrationFormType extends AbstractType
           ]),
         ],
       ])
-      ->add('plainPassword', PasswordType::class, [
-        // instead of being set onto the object directly,
-        // this is read and encoded in the controller
+      ->add('plainPassword', RepeatedType::class, [
+        'type' => PasswordType::class,
         'mapped' => false,
-        'attr' => [
-          'autocomplete' => 'new-password',
-          'placeholder' => 'Entrez votre mot de passe'
+        'invalid_message' => 'Les mots de passe doivent être identiques',
+        'options' => [
+          'attr' => [
+            'class' => 'password-field',
+            'autocomplete' => 'new-password',
+          ]
         ],
-        'constraints' => [
-          new NotBlank([
-            'message' => 'Entrez un mot de passe.',
-          ]),
-          new Length([
-            'min' => 6,
-            'minMessage' => 'Votre mot de passe doit faire {{ limit }} caractères minimum',
-            // max length allowed by Symfony for security reasons
-            'max' => 4096,
-          ]),
+        'required' => true,
+        'first_options'  => [
+          'label' => 'Entrez votre mot de passe',
+          'attr' => [
+            'class' => 'form-control',
+            'placeholder' => 'Entrez votre mot de passe'
+          ],
+          'constraints' => [
+            new NotBlank(['message' => 'Veuillez saisir un mot de passe.']),
+            new Length(['min' => 6, 'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères', 'max' => 4096,]),
+          ]
+        ],
+        'second_options' => [
+          'label' => 'Validez votre mot de passe',
+          'attr' => [
+            'class' => 'form-control',
+            'placeholder' => 'Validez votre mot de passe'
+          ],
+          'constraints' => [
+            new NotBlank(['message' => 'Veuillez saisir un mot de passe.']),
+            new Length(['min' => 6, 'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères', 'max' => 4096,]),
+          ]
         ],
       ]);
   }
