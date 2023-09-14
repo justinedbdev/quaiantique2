@@ -4,8 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Reservation;
 use App\Form\ReservationFormType;
-use App\Repository\PlaceDisponibleRepository;
-use App\Repository\ReservationRepository;
 use App\Service\MailerService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,12 +13,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ReservationController extends AbstractController
 {
-    #[Route('/reservation/{date_reservation}/{nb_couvert}', name: 'app_reservation')]
+    #[Route('/reservation', name: 'app_reservation')]
     public function reservation(
         Request $request,
         MailerService $mailerService,
-        EntityManagerInterface $entityManager,
-
+        EntityManagerInterface $entityManager
     ): Response {
         $reservation = new Reservation();
         $form = $this->createForm(ReservationFormType::class, $reservation);
