@@ -23,6 +23,8 @@ class ReservationFormType extends AbstractType
             ->add('date_reservation', DateType::class, [
                 'widget' => 'single_text',
                 'label' => 'Date de réservation*',
+                'input'  => 'datetime_immutable',
+                'attr'  => ['min' => date('Y-m-d')],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Choisissez une date de réservation',
@@ -31,6 +33,11 @@ class ReservationFormType extends AbstractType
             ])
             ->add('creneau_horaire', TimeType::class, [
                 'label' => 'Créneau horaire*',
+                'input' => 'datetime',
+                'widget'  => 'choice',
+                'hours'   => [19, 20, 21],
+                'minutes' => [00, 15, 30, 45],
+                "required" => true,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Choisissez un créneau horaire',

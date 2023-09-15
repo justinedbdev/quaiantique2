@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -21,6 +22,7 @@ class Reservation
     private ?\DateTimeInterface $creneau_horaire = null;
 
     #[ORM\Column]
+    #[Assert\GreaterThanOrEqual(value: 1, message: "Le nombre de convive minimum est 1")]
     private ?int $nb_couvert = null;
 
     #[ORM\Column(length: 255)]
@@ -30,6 +32,7 @@ class Reservation
     private ?string $prenom_reservation = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Email]
     private ?string $email_reservation = null;
 
     #[ORM\Column]
