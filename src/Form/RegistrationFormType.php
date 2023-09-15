@@ -55,7 +55,10 @@ class RegistrationFormType extends AbstractType
           ],
           'constraints' => [
             new NotBlank(['message' => 'Veuillez saisir un mot de passe.']),
-            new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/', "Votre mot de passe doit contenir au moins 14 caractères avec une majuscule, une minuscule, un chiffre et un caractère spécial"),
+            new Regex(
+              '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
+              "Votre mot de passe doit contenir au moins 14 caractères avec une majuscule, une minuscule, un chiffre et un caractère spécial"
+            ),
           ]
         ],
         'second_options' => [
@@ -66,7 +69,10 @@ class RegistrationFormType extends AbstractType
           ],
           'constraints' => [
             new NotBlank(['message' => 'Veuillez saisir un mot de passe.']),
-            new Regex('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/', "Votre mot de passe doit contenir au moins 14 caractères avec une majuscule, une minuscule, un chiffre et un caractère spécial"),
+            new Regex(
+              '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{14,}$/',
+              "Votre mot de passe doit contenir au moins 14 caractères avec une majuscule, une minuscule, un chiffre et un caractère spécial"
+            ),
           ]
         ],
       ]);
